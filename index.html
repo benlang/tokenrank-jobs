@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TokenRank Jobs</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="top-nav" aria-label="Main navigation">
+        <a class="logo" href="#" aria-label="TokenRank Jobs home">🪙</a>
+        <div class="nav-links">
+          <a href="#jobs">Jobs</a>
+          <a href="#about">About</a>
+          <a href="#post">Submit a job</a>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <h1>Token-backed job directory</h1>
+        <p class="hero-copy">
+          Browse roles ranked by how many tokens employers put behind them.
+        </p>
+      </section>
+
+      <section class="featured" aria-label="Featured jobs">
+        <div id="featured-list" class="featured-list"></div>
+      </section>
+
+      <section class="press-strip" id="about" aria-labelledby="press-heading">
+        <h2 id="press-heading">Ranked by signal</h2>
+        <div class="press-links" aria-label="Ranking facts">
+          <span>Highest tokens first</span>
+          <span>Newest wins ties</span>
+          <span>Employer funded</span>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="Job filters">
+        <input id="search" type="search" placeholder="Search jobs..." />
+        <select id="location-filter" aria-label="Filter by location">
+          <option value="">📍 Location</option>
+          <option value="remote">Remote</option>
+          <option value="san francisco">San Francisco</option>
+          <option value="new york">New York</option>
+          <option value="europe">Europe</option>
+        </select>
+        <select id="token-filter" aria-label="Filter by token count">
+          <option value="0">🪙 Token count</option>
+          <option value="100000">100,000+ tokens</option>
+          <option value="250000">250,000+ tokens</option>
+          <option value="400000">400,000+ tokens</option>
+        </select>
+        <span id="job-count" class="job-count"></span>
+      </section>
+
+      <section class="jobs-panel" id="jobs" aria-labelledby="jobs-heading">
+        <h2 id="jobs-heading">Ranked jobs</h2>
+        <div id="jobs-list" class="jobs-list" aria-live="polite"></div>
+      </section>
+
+      <section class="submit-panel" id="post">
+        <form class="job-form" id="job-form">
+          <h2>Submit a job</h2>
+
+          <div class="form-grid">
+            <label>
+              Job title
+              <input name="title" type="text" placeholder="Senior Protocol Engineer" required />
+            </label>
+
+            <label>
+              Employer
+              <input name="employer" type="text" placeholder="Northstar Labs" required />
+            </label>
+
+            <label>
+              Location
+              <input name="location" type="text" placeholder="Remote" required />
+            </label>
+
+            <label>
+              Token count
+              <input name="tokens" type="number" min="1" step="1" placeholder="125000" required />
+            </label>
+          </div>
+
+          <label>
+            Description
+            <textarea
+              name="description"
+              rows="3"
+              placeholder="Build developer-facing tools for onchain teams."
+              required
+            ></textarea>
+          </label>
+
+          <button type="submit">Add job</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
