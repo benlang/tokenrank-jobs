@@ -4,23 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TokenRank Jobs</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="page-shell">
       <nav class="top-nav" aria-label="Main navigation">
-        <a class="logo" href="#" aria-label="TokenRank Jobs home">🪙</a>
+        <a class="logo" href="#" aria-label="TokenRank Jobs home">TR</a>
         <div class="nav-links">
           <a href="#jobs">Jobs</a>
           <a href="#about">About</a>
-          <a href="#post">Submit a job</a>
+          <button
+            class="nav-toggle"
+            id="submit-toggle"
+            type="button"
+            aria-controls="post"
+            aria-expanded="false"
+          >
+            Submit a job
+          </button>
         </div>
       </nav>
 
       <section class="hero">
-        <h1>Token-backed job directory</h1>
+        <h1>Token job board</h1>
         <p class="hero-copy">
-          Browse roles ranked by how many tokens employers put behind them.
+          Browse roles ranked by how many tokens employers provide each month.
         </p>
       </section>
 
@@ -28,39 +37,39 @@
         <div id="featured-list" class="featured-list"></div>
       </section>
 
-      <section class="press-strip" id="about" aria-labelledby="press-heading">
-        <h2 id="press-heading">Ranked by signal</h2>
-        <div class="press-links" aria-label="Ranking facts">
-          <span>Highest tokens first</span>
-          <span>Newest wins ties</span>
-          <span>Employer funded</span>
-        </div>
-      </section>
-
       <section class="toolbar" aria-label="Job filters">
         <input id="search" type="search" placeholder="Search jobs..." />
         <select id="location-filter" aria-label="Filter by location">
-          <option value="">📍 Location</option>
+          <option value="">Location</option>
           <option value="remote">Remote</option>
           <option value="san francisco">San Francisco</option>
           <option value="new york">New York</option>
           <option value="europe">Europe</option>
         </select>
-        <select id="token-filter" aria-label="Filter by token count">
-          <option value="0">🪙 Token count</option>
-          <option value="100000">100,000+ tokens</option>
-          <option value="250000">250,000+ tokens</option>
-          <option value="400000">400,000+ tokens</option>
+        <select id="category-filter" aria-label="Filter by category">
+          <option value="">Category</option>
+          <option value="engineering">Engineering</option>
+          <option value="security">Security</option>
+          <option value="developer relations">Developer relations</option>
+          <option value="marketing">Marketing</option>
+          <option value="customer support">Customer support</option>
+          <option value="biz ops">Biz ops</option>
+        </select>
+        <select id="token-filter" aria-label="Filter by monthly token count">
+          <option value="0">Monthly token count</option>
+          <option value="100000">100,000+ monthly tokens</option>
+          <option value="250000">250,000+ monthly tokens</option>
+          <option value="400000">400,000+ monthly tokens</option>
         </select>
         <span id="job-count" class="job-count"></span>
       </section>
 
       <section class="jobs-panel" id="jobs" aria-labelledby="jobs-heading">
-        <h2 id="jobs-heading">Ranked jobs</h2>
+        <h2 id="jobs-heading">Full list</h2>
         <div id="jobs-list" class="jobs-list" aria-live="polite"></div>
       </section>
 
-      <section class="submit-panel" id="post">
+      <section class="submit-panel" id="post" hidden>
         <form class="job-form" id="job-form">
           <h2>Submit a job</h2>
 
@@ -81,8 +90,21 @@
             </label>
 
             <label>
-              Token count
+              Monthly token count
               <input name="tokens" type="number" min="1" step="1" placeholder="125000" required />
+            </label>
+
+            <label>
+              Category
+              <select name="category" required>
+                <option value="">Choose a category</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Security">Security</option>
+                <option value="Developer relations">Developer relations</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Customer support">Customer support</option>
+                <option value="Biz ops">Biz ops</option>
+              </select>
             </label>
           </div>
 
